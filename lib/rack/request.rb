@@ -194,7 +194,9 @@ module Rack
       if @env["rack.request.query_string"] == query_string
         @env["rack.request.query_hash"]
       else
-        p = parse_query(query_string, '&;')
+        # NOTE: Forces th use of Utils so that a wrong number of args error isn't thrown.
+        p = Utils.parse_nested_query(query_string, '&;')
+
         @env["rack.request.query_string"] = query_string
         @env["rack.request.query_hash"]   = p
       end
