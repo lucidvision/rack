@@ -1,5 +1,16 @@
+Wed Jun 24 12:13:37 2015  Aaron Patterson <tenderlove@ruby-lang.org>
+
+	* Fix Ruby 1.8 backwards compatibility
+
+Fri Jun 19 07:14:50 2015  Matthew Draper <matthew@trebex.net>
+
+	* Work around a Rails incompatibility in our private API
+
+Fri Jun 12 11:37:41 2015  Aaron Patterson <tenderlove@ruby-lang.org>
+
+	* Prevent extremely deep parameters from being parsed. CVE-2015-3225
+
 ### December 18th, Thirty sixth public release 1.6.0
-  - TODO
 
 ### February 7th, Thirty fifth public release 1.5.2
   - Fix CVE-2013-0263, timing attack against Rack::Session::Cookie

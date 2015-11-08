@@ -152,7 +152,15 @@ describe Rack::Request do
     req.POST.should.be.empty
     req.params.should.equal "foo" => "bar", "quux" => "b", "la" => nil, "wun" => "duh"
   end
-  
+
+  should "use semi-colons as separators for query strings in GET" do
+    req = Rack::Request.new(Rack::MockRequest.env_for("/?foo=bar&quux=b;la;wun=duh"))
+    req.query_string.should.equal "foo=bar&quux=b;la;wun=duh"
+    req.GET.should.equal "foo" => "bar", "quux" => "b", "la" => nil, "wun" => "duh"
+    req.POST.should.be.empty
+    req.params.should.equal "foo" => "bar", "quux" => "b", "la" => nil, "wun" => "duh"
+  end
+
   should "limit the keys from the GET query string" do
     env = Rack::MockRequest.env_for("/?foo=bar")
 
